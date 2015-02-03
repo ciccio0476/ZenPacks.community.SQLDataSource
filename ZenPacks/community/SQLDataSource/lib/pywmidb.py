@@ -187,7 +187,7 @@ TYPEFUNCT = {CIM_SINT8:lambda v:v.v_sint8, CIM_UINT8:lambda v:v.v_uint8,
     CIM_REAL32:lambda v:float(v.v_uint32),CIM_REAL64:lambda v:float(v.v_uint64),
     CIM_OBJECT:lambda v:v.v_string, CIM_STRING:lambda v:v.v_string,
     CIM_CHAR16:lambda v:v.v_string.decode('utf16'), CIM_DATETIME: _datetime,
-    CIM_BOOLEAN:lambda v: str(v).lower() == 'true',
+    CIM_BOOLEAN:lambda v: int(bool(v.v_boolean)),
     CIM_REFERENCE:lambda v:v.v_string.startswith(r'\\') and v.v_string.split(
         ':', 1)[-1] or v.v_string,
     CIM_ARR_SINT8:lambda v:_convertArray(v.a_sint8),
